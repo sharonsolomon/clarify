@@ -63,8 +63,8 @@ class Parser(object):
             datetime.datetime object representing the results timestamp, from
             the ``Timestamp`` element in the XML document
 
-        """
-        return dateutil.parser.parse(tree.xpath('/ElectionResult/Timestamp')[0].text)
+        """ 
+        return dateutil.parser.parse(tree.xpath('/ElectionResult/Timestamp')[0].text, tzinfos={"EST": -5*3600})
 
     def _parse_election_name(self, tree):
         """
